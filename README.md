@@ -61,10 +61,11 @@ titanic-survival-prediction/
 
 > This section will be updated as the project grows!
 
-- [ ] EDA
-- [ ] Feature Engineering
+- [x] EDA
+- [x] Feature Engineering
 - [ ] Modeling
 - [ ] Kaggle Submission
+➡️ [titanic_EDA.ipynb](./notebooks/titanic_EDA.ipynb)
 
 ---
 
