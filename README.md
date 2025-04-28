@@ -16,7 +16,7 @@ It’s basically the “Hello, World!” of data science — and here I am, divi
 
 ---
 
-## 🗂️ Folder Structure (Work in Progress)
+## 📂 Folder Structure (Work in Progress)
 
 titanic-survival-prediction/
 ├── data/
@@ -38,6 +38,8 @@ titanic-survival-prediction/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+
+
 
 
 ---
