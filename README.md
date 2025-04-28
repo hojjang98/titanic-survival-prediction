@@ -19,31 +19,26 @@ It’s basically the “Hello, World!” of data science — and here I am, divi
 ## 🗂️ Folder Structure (Work in Progress)
 
 titanic-survival-prediction/
-│
-├── data/                 
-│   ├── raw/             
-│   └── processed/      
-│
-├── notebooks/           
+├── data/
+│   ├── raw/
+│   └── processed/
+├── notebooks/
 │   ├── 01_EDA.ipynb
 │   ├── 02_Feature_Engineering.ipynb
 │   ├── 03_Modeling.ipynb
 │   └── 04_Final_Submission.ipynb
-│
-├── scripts/               
-│   ├── preprocess.py      
-│   ├── train.py           
-│   └── utils.py          
-│
-├── models/               
-│
-├── submissions/           
+├── scripts/
+│   ├── preprocess.py
+│   ├── train.py
+│   └── utils.py
+├── models/
+├── submissions/
 │   └── submission_2025-04-25.csv
-│
-├── figures/               
-├── requirements.txt       
-├── README.md             
-└── .gitignore            
+├── figures/
+├── requirements.txt
+├── README.md
+└── .gitignore
+
 
 ---
 
