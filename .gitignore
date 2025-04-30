@@ -23,5 +23,5 @@ Thumbs.db
 models/*.pkl
 models/*.joblib
 
-# Submission files
-submissions/*.csv
+# submissions/*.csv
+
