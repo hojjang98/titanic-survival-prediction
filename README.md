@@ -25,9 +25,8 @@ titanic-survival-prediction/
 │   └── processed/
 ├── notebooks/
 │   ├── 01_EDA.ipynb
-│   ├── 02_Feature_Engineering.ipynb
-│   ├── 03_Modeling.ipynb
-│   └── 04_Final_Submission.ipynb
+│   ├── 02_Modeling.ipynb
+│   ├── 03_Final_Submission.ipynb
 ├── scripts/
 │   ├── preprocess.py
 │   ├── train.py
