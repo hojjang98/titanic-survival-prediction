@@ -16,28 +16,38 @@ It’s basically the “Hello, World!” of data science — and here I am, divi
 
 ---
 
-## 📂 Folder Structure (Work in Progress)
+## 📁 Project Structure
 
 ```
 titanic-survival-prediction/
-├── data/
-│   ├── raw/
-│   └── processed/
-├── notebooks/
+├── data/                  
+│   ├── train.csv
+│   ├── test.csv
+│   ├── train_processed.csv
+│   └── test_processed.csv
+│
+├── notebooks/             
 │   ├── 01_EDA.ipynb
 │   ├── 02_Modeling.ipynb
-│   ├── 03_Final_Submission.ipynb
-├── scripts/
-│   ├── preprocess.py
-│   ├── train.py
-│   └── utils.py
-├── models/
-├── submissions/
-│   └── submission_2025-04-25.csv
-├── figures/
-├── requirements.txt
-├── README.md
-└── .gitignore
+│   └── 03_Final_Submission.ipynb
+│
+├── figures/              
+│   ├── Survival_Count.png
+│   ├── Age_Distribution.png
+│   └── ... (etc.)
+│
+├── submissions/           
+│   ├── submission_v1_soft_voting.csv
+│   ├── submission_v2_stacking.csv
+│   ├── ...
+│   └── submission_log.md
+│
+├── scripts/              
+├── models/                
+│
+├── requirements.txt       
+├── README.md              
+└── .gitignore            
 ```
 
 ---
@@ -56,41 +66,47 @@ titanic-survival-prediction/
 
 > This section will be updated as the project grows!
 
-- [x] EDA ➡️ [01_EDA.ipynb](./notebooks/01_EDA.ipynb)
-- [x] Feature Engineering
-- [ ] Modeling
-- [ ] Kaggle Submission
+- [x] EDA ➡️ [01_EDA.ipynb](./notebooks/01_EDA.ipynb)  
+- [x] Feature Engineering  
+- [x] Modeling ➡️ [02_Modeling.ipynb](./notebooks/02_Modeling.ipynb)  
+- [x] Kaggle Submission ➡️ [03_Final_Submission.ipynb](./notebooks/03_Final_Submission.ipynb)
 
 ---
 
 ## 📈 Project Workflow
 
-Here’s how I plan to approach the Titanic survival prediction:
+Here’s how I actually worked through the Titanic survival prediction project:
 
-1. **Exploratory Data Analysis (EDA)**  
-   - Understand the structure of the data  
-   - Check for missing values and class imbalance  
-   - Visualize feature relationships (e.g., survival vs. age, class, sex)
+1. **EDA (Exploratory Data Analysis)**  
+   - Used `seaborn`, `missingno`, `matplotlib` to visualize survival by `Sex`, `Pclass`, and `Age`  
+   - Checked missing values and handled `Cabin`, `Embarked`, `Age`, and `Fare`  
+   - Explored feature relationships (e.g., `FamilySize`, `IsAlone`, `Title`) to prepare for modeling
 
 2. **Feature Engineering**  
-   - Create new features like "FamilySize", "Title", and "IsAlone"  
-   - Handle missing values (e.g., Age, Fare)  
-   - Encode categorical features
+   - Extracted titles from the `Name` column (Mr, Mrs, Miss, etc.)  
+   - Created `FamilySize`, `IsAlone`, `CabinFlag` as new features  
+   - Encoded `Sex` and `Title` using `LabelEncoder`  
+   - Dropped or transformed less useful columns like `Cabin`, `Ticket`
 
-3. **Model Building**  
-   - Try different classifiers: Logistic Regression, Random Forest, XGBoost  
-   - Tune hyperparameters using cross-validation  
-   - Compare model performance (accuracy, F1-score)
+3. **Modeling**  
+   - Trained multiple models: RandomForest, GradientBoosting, XGBoost, CatBoost  
+   - Tuned hyperparameters using `GridSearchCV` and `Optuna`  
+   - Built ensemble models:  
+     - **Soft VotingClassifier** using RF, GB, XGB  
+     - **StackingClassifier** with Logistic Regression as meta-model  
+   - Applied feature selection using `SelectFromModel` (RandomForest 기준)
 
-4. **Prediction & Submission**  
-   - Select best model  
-   - Generate predictions for test set  
-   - Submit to Kaggle and evaluate result
+4. **Evaluation & Submission**  
+   - Compared models using validation accuracy and Kaggle score  
+   - Best validation accuracy: **0.8146** (Optuna-tuned RF, VotingClassifier with feature selection)  
+   - Best Kaggle public score: **0.77990** (VotingClassifier with GridSearchCV tuning)  
+   - Saved and submitted predictions multiple times, with results tracked in `submission_log.md`
 
-5. **Future Plans**  
-   - Try ensembling (voting, stacking)  
-   - Use pipelines for cleaner workflow  
-   - Document the whole process in scripts
+5. **Wrap-up**  
+   - Cleaned up the project structure and notebooks  
+   - Saved key visualizations to `figures/` folder  
+   - Organized submissions, tracked model performance, and documented everything here  
+   - Ready to apply this full pipeline to a bigger, messier dataset next!
 
 
 ## 🤓 Notes to Self
@@ -99,7 +115,29 @@ Here’s how I plan to approach the Titanic survival prediction:
 - Try different models and compare results
 - Don’t be afraid to mess up — it’s all part of the game
 
+
 ---
+
+## 📚 What I Learned
+
+- Ensemble methods like Voting and Stacking tend to outperform individual models
+- Optuna tuning led to the highest validation accuracy, but not the best Kaggle score — lesson learned!
+- Validation performance doesn't guarantee leaderboard success → avoid overfitting!
+- Feature Selection with `SelectFromModel` didn’t always help (sometimes neutral or worse on leaderboard)
+- Submitting with clean, reproducible notebooks helps keep the workflow maintainable
+
+---
+
+## ⚠️ Limitations & Next Steps
+
+- Didn't yet explore SHAP values or permutation-based feature importance  
+- No pipeline automation or full script conversion — something to do in the next iteration  
+- Feature engineering followed mostly common practices; more creativity possible  
+- Kaggle test set is limited in feedback → private score may differ  
+- Plan to apply similar workflow to a more complex, real-world dataset next
+
+---
+
 
 ## ✍️ Author
 
