@@ -54,11 +54,14 @@ titanic-survival-prediction/
 
 ## 🛠️ Tech Stack
 
-- Python 3.10.1
-- pandas & numpy
-- matplotlib & seaborn
-- scikit-learn
-- xgboost (eventually)
+- Python 3.10.1  
+- pandas & numpy  
+- matplotlib & seaborn  
+- scikit-learn  
+- xgboost  
+- catboost  
+- optuna  
+- missingno
 
 ---
 
